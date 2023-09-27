@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
-import styles from './styles/styles.js';
+import styles from '../styles/styles';
 
 export default function HomePage() {
   return (
