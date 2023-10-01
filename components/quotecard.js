@@ -22,9 +22,9 @@ export default function QuoteCard() {
     }, []);  // The empty dependency array means this useEffect runs once when the component mounts
 
     return (
-        <View>
-        <Text>{quote}</Text>
-        <Text>{author}</Text>
-        </View>
+    <Card containerStyle={styles.quoteCard}>
+        <Card.Title>{quote}</Card.Title>
+        <Text style={styles.authorText}>- {author}</Text>
+    </Card>
     );
 }
