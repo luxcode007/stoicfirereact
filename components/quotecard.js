@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import { Card } from 'react-native-elements';
 import db from '../firebaseConfig.js';  // Adjust the path
 
 export default function QuoteCard() {
