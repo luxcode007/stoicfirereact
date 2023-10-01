@@ -9,7 +9,7 @@ export default function QuoteCard() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const doc = await db.collection('quotes').doc('your-document-id').get();
+            const doc = await db.collection('quotes').doc('stoicquote00').get();
             const data = doc.data();
             setQuote(data.quote);
             setAuthor(data.author);
