@@ -30,6 +30,14 @@ export default function HomePage() {
         {/* NEW component Quote Card, connected to firestore db */}
         <QuoteCard />
         
+        <View style={styles.botNavBar}>
+            <TouchableOpacity style={styles.navButton}>
+            <Text>Previous</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.navButton}>
+            <Text>Next Quote</Text>
+            </TouchableOpacity>
+        </View>
         </View>
     );
 }
