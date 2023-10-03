@@ -3,6 +3,9 @@
 #ios
 ios/
 
+# batchwriting data to db
+batchwritetodb.js
+
 # dependencies
 node_modules/
 

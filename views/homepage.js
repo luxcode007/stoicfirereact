@@ -11,13 +11,13 @@ export default function HomePage() {
         {/* Navigation Bar */}
         <View style={styles.navBar}>
             <TouchableOpacity style={styles.navButton}>
-            <Text>Nav 1</Text>
+            <Text>Home</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.navButton}>
-            <Text>Previous Quote</Text>
+            <Text>Bookmark</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.navButton}>
-            <Text>New Quote</Text>
+            <Text>My Bookmarks</Text>
             </TouchableOpacity>
         </View>
         
