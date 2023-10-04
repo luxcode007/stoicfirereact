@@ -3,6 +3,9 @@
 #ios
 ios/
 
+# Firebase/Firestore key
+firebaseKey/
+
 # batchwriting data to db
 batchwritetodb.js
 

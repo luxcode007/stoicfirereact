@@ -35,7 +35,7 @@ export default function HomePage() {
             <Text>Previous</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.navButton}>
-            <Text>Next Quote</Text>
+            <Text>New Quote</Text>
             </TouchableOpacity>
         </View>
         </View>
