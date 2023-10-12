@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 // import { Card } from 'react-native-elements'; now unnecessary per new card componenet below
 import styles from '../styles/styles';
 import QuoteCard from '../components/quotecard';
+import RandomQuoteButton from '../components/newquote';
+import PreviousQuoteButton from '../components/previousquote';
 
 export default function HomePage() {
     return (
