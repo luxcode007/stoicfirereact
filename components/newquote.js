@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
@@ -17,7 +17,9 @@ function RandomQuoteButton({ setQuote, setAuthor, setPreviousQuote }) {
     };
 
     return (
-        <Button title="Random Quote" onPress={fetchRandomQuote} />
+        <TouchableOpacity style={style} onPress={fetchRandomQuote}>
+            <Text>New Quote</Text>
+        </TouchableOpacity>
     );
 }
 

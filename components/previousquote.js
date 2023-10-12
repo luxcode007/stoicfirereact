@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 
 function PreviousQuoteButton({ setQuote, setAuthor, previousQuote }) {
 
@@ -11,7 +11,9 @@ function PreviousQuoteButton({ setQuote, setAuthor, previousQuote }) {
     };
 
     return (
-        <Button title="Previous Quote" onPress={goToPreviousQuote} />
+        <TouchableOpacity style={style} onPress={goToPreviousQuote}>
+            <Text>Previous</Text>
+        </TouchableOpacity>
     );
 }
 

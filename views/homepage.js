@@ -33,13 +33,19 @@ export default function HomePage() {
         <QuoteCard />
         
         <View style={styles.botNavBar}>
-            <TouchableOpacity style={styles.navButton}>
-            <Text>Previous</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.navButton}>
-            <Text>New Quote</Text>
-            </TouchableOpacity>
-        </View>
+                <PreviousQuoteButton
+                    setQuote={setQuote}
+                    setAuthor={setAuthor}
+                    previousQuote={previousQuote}
+                    style={styles.navButton}
+                />
+                <RandomQuoteButton
+                    setQuote={setQuote}
+                    setAuthor={setAuthor}
+                    setPreviousQuote={setPreviousQuote}
+                    style={styles.navButton}
+                />
+            </View>
         </View>
     );
 }
