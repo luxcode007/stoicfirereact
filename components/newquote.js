@@ -32,7 +32,7 @@ export default function NewQuoteButton({ style, setQuote, setAuthor, setPrevious
             const newAuthor = quoteDoc.data().author;
 
             setQuote((currentQuote) => {
-                setPreviousQuote({ quote: currentQuote, author: newAuthor }); 
+                setPreviousQuote({ quote: currentQuote, author: newAuthor });
                 return newQuote; // Return new quote for setQuote state update
             });
             setAuthor(newAuthor);
@@ -46,7 +46,7 @@ export default function NewQuoteButton({ style, setQuote, setAuthor, setPrevious
         console.log("Button was pressed");
         fetchRandomQuote();
         }}>
-            <Text>Test Quote</Text>
+            <Text>New Quote</Text>
         </TouchableOpacity>
     );
 
