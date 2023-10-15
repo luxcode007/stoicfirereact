@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { getDocs, collection, doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
-export default function NewQuoteButton(props) {
-    const [allQuoteIds, setAllQuoteIds] = useState([]);
-    const [quote, setQuote] = useState('');
-    const [author, setAuthor] = useState('');
-
-    // Fetch all document IDs once when the component mounts
+export default function NewQuoteButton({ style, setQuote, setAuthor, setPreviousQuote }) {
     useEffect(() => {
         const fetchAllIds = async () => {
             const querySnapshot = await getDocs(collection(db, 'quotes'));
@@ -28,6 +23,7 @@ export default function NewQuoteButton(props) {
 
             const quoteDoc = await getDoc(doc(db, 'quotes', randomId));
             if (quoteDoc.exists()) {
+                setPreviousQuote({ quote: quote, author: author }); // Set the current quote as previous
                 setQuote(quoteDoc.data().quote);
                 setAuthor(quoteDoc.data().author);
                 // You may want to communicate this data back to the parent or another component, possibly using a callback.
@@ -38,10 +34,9 @@ export default function NewQuoteButton(props) {
     console.log('Fetching random quote...');
 
     return (
-        <TouchableOpacity {...props} onPress={fetchRandomQuote}>
+        <TouchableOpacity {...props} style={style} onPress={fetchRandomQuote}>
             <Text>New Quote</Text>
         </TouchableOpacity>
     );
 
 }
-
