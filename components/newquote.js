@@ -26,12 +26,11 @@ export default function NewQuoteButton({ style, setQuote, setAuthor, setPrevious
                 setPreviousQuote({ quote: quote, author: author }); // Set the current quote as previous
                 setQuote(quoteDoc.data().quote);
                 setAuthor(quoteDoc.data().author);
+                console.log('Fetching random quote...');
                 // You may want to communicate this data back to the parent or another component, possibly using a callback.
             }
         }
     }
-
-    console.log('Fetching random quote...');
 
     return (
         <TouchableOpacity {...props} style={style} onPress={fetchRandomQuote}>

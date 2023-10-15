@@ -7,10 +7,9 @@ function PreviousQuoteButton({ setQuote, setAuthor, previousQuote, style }) {
         if (previousQuote) {
             setQuote(previousQuote.quote);
             setAuthor(previousQuote.author);
+            console.log('Going to previous quote...');
         }
     };
-
-    console.log('Going to previous quote...');
 
     return (
         <TouchableOpacity style={style} onPress={goToPreviousQuote}>
