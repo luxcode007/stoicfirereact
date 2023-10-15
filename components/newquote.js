@@ -3,7 +3,7 @@ import { TouchableOpacity, Text } from 'react-native';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
-function RandomQuoteButton({ setQuote, setAuthor, setPreviousQuote }) {
+function RandomQuoteButton({ setQuote, setAuthor, setPreviousQuote, style }) {
     const fetchRandomQuote = async () => {
         // Logic to fetch a random quote from Firestore
         // Once fetched, you can use setQuote and setAuthor to update the state in the parent component

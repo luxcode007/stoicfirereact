@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 
-function PreviousQuoteButton({ setQuote, setAuthor, previousQuote }) {
+function PreviousQuoteButton({ setQuote, setAuthor, previousQuote, style }) {
 
     const goToPreviousQuote = () => {
         if (previousQuote) {
@@ -12,7 +12,7 @@ function PreviousQuoteButton({ setQuote, setAuthor, previousQuote }) {
 
     return (
         <TouchableOpacity style={style} onPress={goToPreviousQuote}>
-            <Text>Previous</Text>
+            <Text>Previous Quote</Text>
         </TouchableOpacity>
     );
 }
