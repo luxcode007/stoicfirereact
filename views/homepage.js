@@ -3,14 +3,14 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 // import { Card } from 'react-native-elements'; now unnecessary per new card componenet below
 import styles from '../styles/styles';
 import QuoteCard from '../components/quotecard';
-import RandomQuoteButton from '../components/newquote';
+import NewQuoteButton from '../components/newquote';
 import PreviousQuoteButton from '../components/previousquote';
 
 export default function HomePage() {
     const [quote, setQuote] = useState('');
     const [author, setAuthor] = useState('');
     const [previousQuote, setPreviousQuote] = useState(null);
-    
+
     return (
         <View style={styles.container}>
         
@@ -43,12 +43,7 @@ export default function HomePage() {
                     previousQuote={previousQuote}
                     style={styles.navButton}
                 />
-                <RandomQuoteButton
-                    setQuote={setQuote}
-                    setAuthor={setAuthor}
-                    setPreviousQuote={setPreviousQuote}
-                    style={styles.navButton}
-                />
+                    <NewQuoteButton style={styles.navButton} />
             </View>
         </View>
     );

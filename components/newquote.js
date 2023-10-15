@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, Text } from 'react-native';
-import { doc, getDoc } from 'firebase/firestore';
+import { getDocs, collection, doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
-function RandomQuoteButton({ setQuote, setAuthor, setPreviousQuote, style }) {
+export default function NewQuoteButton(props) {
+    const [allQuoteIds, setAllQuoteIds] = useState([]);
+    const [quote, setQuote] = useState('');
+    const [author, setAuthor] = useState('');
+
+    // Fetch all document IDs once when the component mounts
+    useEffect(() => {
+        const fetchAllIds = async () => {
+            const querySnapshot = await getDocs(collection(db, 'quotes'));
+            const ids = [];
+            querySnapshot.forEach((doc) => {
+                ids.push(doc.id);
+            });
+            setAllQuoteIds(ids);
+        };
+        fetchAllIds();
+    }, []);
+
     const fetchRandomQuote = async () => {
-        // Logic to fetch a random quote from Firestore
-        // Once fetched, you can use setQuote and setAuthor to update the state in the parent component
-        const randomIndex = Math.floor(Math.random() * 10); // Replace YOUR_QUOTE_COUNT with actual count
-        const quoteDoc = await getDoc(doc(db, 'quotes', `quote${randomIndex}`));
-        if (quoteDoc.exists()) {
-            setPreviousQuote({quote: quote, author: author}); // Set the previous quote before updating to the new one
-            setQuote(quoteDoc.data().quote);
-            setAuthor(quoteDoc.data().author);
+        if (allQuoteIds.length > 0) {
+            const randomIndex = Math.floor(Math.random() * allQuoteIds.length);
+            const randomId = allQuoteIds[randomIndex];
+
+            const quoteDoc = await getDoc(doc(db, 'quotes', randomId));
+            if (quoteDoc.exists()) {
+                setQuote(quoteDoc.data().quote);
+                setAuthor(quoteDoc.data().author);
+                // You may want to communicate this data back to the parent or another component, possibly using a callback.
+            }
         }
-    };
+    }
+
+    console.log('Fetching random quote...');
 
     return (
-        <TouchableOpacity style={style} onPress={fetchRandomQuote}>
+        <TouchableOpacity {...props} onPress={fetchRandomQuote}>
             <Text>New Quote</Text>
         </TouchableOpacity>
     );
+
 }
 
-export default RandomQuoteButton;
