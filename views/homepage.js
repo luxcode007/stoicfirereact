@@ -15,17 +15,17 @@ export default function HomePage() {
         <View style={styles.container}>
         
         {/* Navigation Bar */}
-        <View style={styles.navBar}>
-            <TouchableOpacity style={styles.navButton}>
-            <Text>Home</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.navButton}>
-            <Text>Bookmark</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.navButton}>
-            <Text>My Bookmarks</Text>
-            </TouchableOpacity>
-        </View>
+            <View style={styles.navBar}>
+                <TouchableOpacity style={styles.navButton}>
+                <Text>Home</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.navButton}>
+                <Text>Bookmark</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.navButton}>
+                <Text>My Bookmarks</Text>
+                </TouchableOpacity>
+            </View>
         
         {/* OLD in-view Quote Card */}
         {/* <Card containerStyle={styles.quoteCard}>
@@ -34,16 +34,20 @@ export default function HomePage() {
         </Card> */}
 
         {/* NEW component Quote Card, connected to firestore db */}
-        <QuoteCard />
+            <QuoteCard quote={quote} author={author} previousQuote={previousQuote} />
         
-        <View style={styles.botNavBar}>
-                <PreviousQuoteButton
-                    setQuote={setQuote}
-                    setAuthor={setAuthor}
-                    previousQuote={previousQuote}
-                    style={styles.navButton}
+            <View style={styles.botNavBar}>
+                <PreviousQuoteButton 
+                    style={styles.navButton} 
+                    setQuote={setQuote} 
+                    setAuthor={setAuthor} 
+                    setPreviousQuote={setPreviousQuote}
                 />
-                    <NewQuoteButton style={styles.navButton} />
+                <NewQuoteButton 
+                    style={styles.navButton} 
+                    setQuote={setQuote} 
+                    setAuthor={setAuthor} 
+                />
             </View>
         </View>
     );
