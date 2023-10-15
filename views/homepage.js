@@ -63,6 +63,7 @@ export default function HomePage() {
                     style={styles.navButton} 
                     setQuote={setQuote} 
                     setAuthor={setAuthor} 
+                    setPreviousQuote={setPreviousQuote}
                 />
             </View>
         </View>

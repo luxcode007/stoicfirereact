@@ -23,27 +23,30 @@ export default function NewQuoteButton({ style, setQuote, setAuthor, setPrevious
     const fetchRandomQuote = async () => {
         console.log('fetchRandomQuote is being called');
         if (allQuoteIds.length > 0) {
-            const randomIndex = Math.floor(Math.random() * allQuoteIds.length);
-            const randomId = allQuoteIds[randomIndex];
+        const randomIndex = Math.floor(Math.random() * allQuoteIds.length);
+        const randomId = allQuoteIds[randomIndex];
 
-            const quoteDoc = await getDoc(doc(db, 'quotes', randomId));
-            if (quoteDoc.exists()) {
-                // capturing current state before updating
-                setQuote((currentQuote) => {
-                    setPreviousQuote({ quote: currentQuote, author: author }); // Set the current quote as previous
-                    return quoteDoc.data().quote;
-                });
-                setAuthor(quoteDoc.data().author);
-                console.log('Fetching random quote...');
-                // You may want to communicate this data back to the parent or another component, possibly using a callback.
+        const quoteDoc = await getDoc(doc(db, 'quotes', randomId));
+        if (quoteDoc.exists()) {
+            const newQuote = quoteDoc.data().quote;
+            const newAuthor = quoteDoc.data().author;
+
+            setQuote((currentQuote) => {
+                setPreviousQuote({ quote: currentQuote, author: newAuthor }); 
+                return newQuote; // Return new quote for setQuote state update
+            });
+            setAuthor(newAuthor);
+            console.log('Fetching random quote...');
             }
         }
     }
 
     return (
-        <TouchableOpacity style={style} onPress={() => 
-            console.log("Button was pressed")}>
-            <Text>New Quote</Text>
+        <TouchableOpacity style={style} onPress={() => {
+        console.log("Button was pressed");
+        fetchRandomQuote();
+        }}>
+            <Text>Test Quote</Text>
         </TouchableOpacity>
     );
 
