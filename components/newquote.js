@@ -7,6 +7,7 @@ export default function NewQuoteButton({ style, setQuote, setAuthor, setPrevious
     const [allQuoteIds, setAllQuoteIds] = useState([]);
 
     useEffect(() => {
+        console.log("useEffect in NewQuoteButton is running");
         const fetchAllIds = async () => {
             const querySnapshot = await getDocs(collection(db, 'quotes'));
             const ids = [];
@@ -14,11 +15,13 @@ export default function NewQuoteButton({ style, setQuote, setAuthor, setPrevious
                 ids.push(doc.id);
             });
             setAllQuoteIds(ids);
+            console.log(allQuoteIds);
         };
         fetchAllIds();
     }, []);
 
     const fetchRandomQuote = async () => {
+        console.log('fetchRandomQuote is being called');
         if (allQuoteIds.length > 0) {
             const randomIndex = Math.floor(Math.random() * allQuoteIds.length);
             const randomId = allQuoteIds[randomIndex];
@@ -38,7 +41,8 @@ export default function NewQuoteButton({ style, setQuote, setAuthor, setPrevious
     }
 
     return (
-        <TouchableOpacity {...props} style={style} onPress={fetchRandomQuote}>
+        <TouchableOpacity style={style} onPress={() => 
+            console.log("Button was pressed")}>
             <Text>New Quote</Text>
         </TouchableOpacity>
     );
