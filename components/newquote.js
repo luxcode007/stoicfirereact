@@ -5,7 +5,7 @@ import { db } from '../firebaseConfig';
 
 export default function NewQuoteButton({ style, setQuote, setAuthor, setPreviousQuote }) {
     const [allQuoteIds, setAllQuoteIds] = useState([]);
-    
+
     useEffect(() => {
         const fetchAllIds = async () => {
             const querySnapshot = await getDocs(collection(db, 'quotes'));

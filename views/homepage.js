@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 // import { Card } from 'react-native-elements'; now unnecessary per new card componenet below
 import styles from '../styles/styles';
