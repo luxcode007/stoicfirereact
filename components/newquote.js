@@ -31,12 +31,14 @@ export default function NewQuoteButton({ style, setQuote, setAuthor, setPrevious
             const newQuote = quoteDoc.data().quote;
             const newAuthor = quoteDoc.data().author;
 
-            setQuote((currentQuote) => {
-                setPreviousQuote({ quote: currentQuote, author: newAuthor });
-                return newQuote; // Return new quote for setQuote state update
+            setQuote(currentQuote => {
+                // Using another function to ensure we capture the current state
+                setAuthor(currentAuthor => {
+                    setPreviousQuote({ quote: currentQuote, author: currentAuthor });
+                    return newAuthor; // This sets the new author
+                });
+                return newQuote; // This sets the new quote
             });
-            setAuthor(newAuthor);
-            console.log('Fetching random quote...');
             }
         }
     }
