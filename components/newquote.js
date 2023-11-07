@@ -3,7 +3,7 @@ import { TouchableOpacity, Text } from 'react-native';
 import { getDocs, collection, doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
-export default function NewQuoteButton({ style, setQuote, setAuthor, setPreviousQuote }) {
+export default function NewQuoteButton({ style, updateQuote }) {
     const [allQuoteIds, setAllQuoteIds] = useState([]);
 
     useEffect(() => {
@@ -27,18 +27,14 @@ export default function NewQuoteButton({ style, setQuote, setAuthor, setPrevious
         const randomId = allQuoteIds[randomIndex];
 
         const quoteDoc = await getDoc(doc(db, 'quotes', randomId));
+
         if (quoteDoc.exists()) {
             const newQuote = quoteDoc.data().quote;
             const newAuthor = quoteDoc.data().author;
 
-            setQuote(currentQuote => {
-                // Using another function to ensure we capture the current state
-                setAuthor(currentAuthor => {
-                    setPreviousQuote({ quote: currentQuote, author: currentAuthor });
-                    return newAuthor; // This sets the new author
-                });
-                return newQuote; // This sets the new quote
-            });
+            updateQuote(newQuote, newAuthor);
+
+            console.log('Fetching random quote...');
             }
         }
     }
