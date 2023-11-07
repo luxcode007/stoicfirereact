@@ -66,14 +66,12 @@ export default function HomePage() {
             <View style={styles.botNavBar}>
                 <PreviousQuoteButton 
                     style={styles.navButton} 
-                    setQuote={setQuote} 
-                    setAuthor={setAuthor} 
-                    setPreviousQuote={setPreviousQuote}
+                    updateQuote={updateQuote}
+                    previousQuote={previousQuote}
                 />
                 <NewQuoteButton 
                     style={styles.navButton} 
                     updateQuote={updateQuote} 
-                    setPreviousQuote={setPreviousQuote}
                 />
             </View>
         </View>
