@@ -13,13 +13,24 @@ export default function HomePage() {
     const [author, setAuthor] = useState('');
     const [previousQuote, setPreviousQuote] = useState(null);
 
+     // Define the updateQuote function
+    const updateQuote = (newQuote, newAuthor) => {
+        // Set the current quote and author as the previousQuote
+        setPreviousQuote({ quote, author });
+
+        // Then update the current quote and author with the new ones
+        setQuote(newQuote);
+        setAuthor(newAuthor);
+    };
+
+
     useEffect(() => {
         const fetchInitialQuote = async () => {
             const docRef = doc(db, 'quotes', 'stoicquote00');
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
-                setQuote(docSnap.data().quote);
-                setAuthor(docSnap.data().author);
+                // Use updateQuote to set the initial quote and author
+                updateQuote(docSnap.data().quote, docSnap.data().author);
             } else {
                 console.log('No such document!');
             }
@@ -61,8 +72,7 @@ export default function HomePage() {
                 />
                 <NewQuoteButton 
                     style={styles.navButton} 
-                    setQuote={setQuote} 
-                    setAuthor={setAuthor} 
+                    updateQuote={updateQuote} 
                     setPreviousQuote={setPreviousQuote}
                 />
             </View>
